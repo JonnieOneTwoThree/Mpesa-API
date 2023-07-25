@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{row[1]}}</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+     <div class="container-fluid">
+         <h3>{{row[1]}}</h3>
+         <div class="row">
+             <div class="col-md-4 shadow p-4 ms-">
+                 <img src="../static/{{row[6]}}" alt=""
+                 width="100%" height="300">
+             </div>
+             <div class="col-md-8">
+                 <p class="text-muted p-2">{{row[7]}}</p>
+                 <h4 class="text-success">KES {{row[5]}}</h4>
+                 <i>Category: {{row[2]}}</i> <br>
+                 <b>stock: {{row[4]}}</b> <br>
+             </div>
+         </div>
+
+         <br>
+         <form action="/checkout" method="post">
+             <input type="hidden" value="{{row[0]}}" name="medicine_id" required>
+<!--             If hidden people will not see it in the browser.If text people will see it in the browser-->
+             <input type="hidden" value="{{row[5]}}" name="amount" required>
+             <input type="number" name="qty" placeholder="Enter quantity" required>
+             <br><br>
+             <input type="tel" name="phone" placeholder="Enter Phone 2547***" required>
+             <br><br>
+             <input type="text" name="address" placeholder="Enter Address" required>
+             <br><br>
+             <input type="submit" value="purchase" class="btn btn-info"
+             onclick="return confirm('Are you sure you want to purchase?');">
+         </form>
+     </div>
+</body>
+</html>
